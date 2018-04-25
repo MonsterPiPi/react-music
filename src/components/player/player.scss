@@ -1,0 +1,86 @@
+@import "~assets/css/mixin.scss";
+
+.play {
+  .play-full {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1966;
+    display: none;
+    background: #000;
+    &.play-full-enter {
+      transform: translate3d(0,100%,0);
+      opacity: 0;
+    }
+    &.play-full-enter-active {
+      opacity: 1;
+      transition: all .1s ease-out;
+      transform: translate3d(0,0,0);
+    }
+    &.play-full-exit {
+      transform: translate3d(0,0,0);
+      opacity: 1;
+    }
+    &.play-full-exit-active {
+      transition: all .1s ease-out;
+      transform: translate3d(0,100%,0);
+      opacity: 0;
+    }
+    .play-bg {
+      width: 100%;
+      height: 100%;
+      opacity: .6;
+      filter: blur(20Px);
+    }
+    .header {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1;
+      height: 120px;
+      padding: 20px 170px;
+      border-bottom: 1px solid rgba(255, 255, 255, .15);
+      .header-back {
+        position: absolute;
+        top: 48px;
+        left: 44px;
+        display: block;
+        width: 72px;
+        height: 72px;
+        @include bg-url("~assets/img/oq.png");
+        @include bg-full;
+      }
+      h1 {
+        height: 60px;
+        line-height: 80px;
+        font-size: 46px;
+        color: #fff;
+      }
+      h2 {
+        height: 60px;
+        line-height: 60px;
+        font-size: 36px;
+        color: rgba(255,255,255,.4);
+      }
+    }
+    .middle {
+      position: absolute;
+      top: 160px;
+      right: 0;
+      left: 0;
+      bottom: 360px;
+    }
+  }
+  .play-min {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+    background: #e5473c;
+    color: #fff;
+  }
+}
