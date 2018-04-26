@@ -61,10 +61,10 @@
       &:before {
         @include bg-url("~assets/img/recommend/t_recommend_icn_daily.png")
       }
-      &::after {
+      &:after {
         content: attr(data-date);
         position: absolute;
-        top: 55%;
+        top: 60%;
         left: 50%;
         font-size: 26px;
         color: #d33a31;
@@ -73,8 +73,13 @@
     }
   }
 
-  .daily:active .menu-icon:before {
-    @include bg-url("~assets/img/recommend/t_recommend_icn_daily_prs.png")
+  .daily:active .menu-icon {
+    &:before {
+      @include bg-url("~assets/img/recommend/t_recommend_icn_daily_prs.png")
+    }
+    &:after {
+      color: #fff;
+    }
   }
   .playlist .menu-icon:before {
     @include bg-url("~assets/img/recommend/t_recommend_icn_playlist.png")

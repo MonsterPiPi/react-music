@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom'
 import Slide from 'base/slide/silde'
 import LcrList from 'components/lcr-list/lcr-list'
 import {getBanner, getPersonalized} from 'api'
@@ -55,10 +54,10 @@ class Recommend extends Component {
             <div className="menu-icon"></div>
             <p>歌单</p>
           </div>
-          <NavLink className="menu-item rank" to="/toplist">
+          <div className="menu-item rank">
             <div className="menu-icon"></div>
             <p>排行榜</p>
-          </NavLink>
+          </div>
         </div>
         <LcrList title="推荐歌单" data={personalized}></LcrList>
       </div>

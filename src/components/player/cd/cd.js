@@ -2,9 +2,9 @@ import React from 'react'
 import './cd.scss'
 
 const Cd = (props) => {
-  const playState = true;
+  const {isPlay} = props;
   return (
-    <div className={playState ? 'player-cd' : 'player-cd pause'}>
+    <div className={isPlay ? 'player-cd' : 'player-cd pause'}>
       <div className="needle"/>
       <div className="disc-box">
         <div className="disc"/>

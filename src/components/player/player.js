@@ -8,28 +8,48 @@ class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFull: false
+      isFull: false,
+      isPlay: false
     }
   }
   
   componentDidMount() {
     this.mmPlayer = ReactDOM.findDOMNode(this.refs.mmPlayer);
+    this.audioEle = ReactDOM.findDOMNode(this.refs.audioEle);
   }
   
+  // 播放暂停
+  play = () => {
+    if (this.state.isPlay) {
+      // 暂停
+      this.audioEle.pause();
+      this.setState({
+        isPlay: false
+      })
+    } else {
+      // 播放
+      this.audioEle.play();
+      this.setState({
+        isPlay: true
+      })
+    }
+  };
+  
   render() {
-    const {isFull} = this.state;
+    const {isFull, isPlay} = this.state;
     return (
-      <div className="play">
-        <CSSTransition in={isFull} timeout={300} classNames="play-full"
-           onEnter={() => {
-             this.mmPlayer.style.display = 'block';
-           }}
-           onExited={() => {
-             this.mmPlayer.style.display = 'none';
-           }}>
-          <div ref="mmPlayer" className="play-full">
-            <div className="play-bg">
-              <img src="http://p1.music.126.net/LQ2iUKlZwqGMysGkeCR4ww==/27487790697969.jpg" alt="" width="100%" height="100%"/>
+      <div className="player">
+        <CSSTransition in={isFull} timeout={150} classNames="player-full"
+                       onEnter={() => {
+                         this.mmPlayer.style.display = 'block';
+                       }}
+                       onExited={() => {
+                         this.mmPlayer.style.display = 'none';
+                       }}>
+          <div ref="mmPlayer" className="player-full">
+            <div className="player-bg">
+              <img src="http://p1.music.126.net/LQ2iUKlZwqGMysGkeCR4ww==/27487790697969.jpg" alt="" width="100%"
+                   height="100%"/>
             </div>
             <div className="header">
             <span className="header-back" onClick={() => {
@@ -39,22 +59,26 @@ class Player extends Component {
               <h2>牛奶咖啡</h2>
             </div>
             <div className="middle">
-              <Cd/>
+              <Cd isPlay={isPlay} />
             </div>
             <div className="footer">
-            
+              <div className="progress-wrapper"></div>
+              <div className="play-wrapper">
+                <div className="btn btn-mode mode-list"/>
+                <div className="btn btn-prev"/>
+                <div className={isPlay ? 'btn btn-play' : 'btn btn-play btn-pause'} onClick={this.play}/>
+                <div className="btn btn-next"/>
+                <div className="btn btn-list"/>
+              </div>
             </div>
           </div>
         </CSSTransition>
-        <div className="play-min" onClick={() => {
+        <div className="player-min" onClick={() => {
           this.setState({isFull: true})
-        }} style={{display: !isFull ? 'block' : 'none'}}>
+        }}>
           我是播放器组件（等待制作中）
         </div>
-        <audio ref="audio" src="https://music.163.com/song/media/outer/url?id=33756016.mp3" preload="auto" autoPlay
-               loop>
-          您的浏览器不支持 audio 元素。
-        </audio>
+        <audio ref="audioEle" src="https://music.163.com/song/media/outer/url?id=33756016.mp3" preload="auto" loop/>
       </div>
     )
   }
