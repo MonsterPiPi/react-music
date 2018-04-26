@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+// import LazyLoad from 'react-lazyload'
 import {formatPlayCount} from 'common/util'
 import './lcr-list.scss'
 
@@ -14,7 +15,7 @@ const LcrList = (props) => {
             return (
               <li className="lcrlist-item" key={item.id}>
                 <div className="item-img">
-                  <img src={`${item.picUrl}?param=200y200`} alt=""/>
+                  <img width="100%" height="100%" src={`${item.picUrl}?param=200y200`} alt=""/>
                 </div>
                 <p className="item-title">{item.name.replace(/\s/g, ' ')}</p>
                 <span className="item-play">{formatPlayCount(item.playCount)}</span>
