@@ -1,0 +1,28 @@
+@import "~assets/css/mixin.scss";
+
+.mm-nav {
+  position: relative;
+  height: 120px;
+  padding: 20px 170px;
+  line-height: 120px;
+  color: #fff;
+  background-color: #e5473c;
+  & &-left {
+    position: absolute;
+    top: 44px;
+    left: 44px;
+    display: block;
+    width: 72px;
+    height: 72px;
+    @include bg-url("~assets/img/oq.png");
+    @include bg-full;
+  }
+  & &-title {
+    width: 100%;
+    font-size: 46px;
+  }
+  & &-right {
+    position: absolute;
+    right: 0;
+  }
+}

@@ -15,11 +15,17 @@ export function getPersonalized() {
 }
 
 //获取用户歌单详情
-export function getUserPlaylist(uid = 344045107) {
-  const url = URL + '/user/playlist';
+export function getUserPlaylist(uid) {
+  const url = `${URL}/user/playlist`;
   return axios.get(url, {
     params: {
       uid: uid
     }
   })
+}
+
+//获取排行榜（完整版）
+export function getTopListDetail() {
+  const url = `${URL}/toplist/detail`;
+  return axios.get(url)
 }

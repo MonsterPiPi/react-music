@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 import Slide from 'base/slide/silde'
 import LcrList from 'components/lcr-list/lcr-list'
 import {getBanner, getPersonalized} from 'api'
@@ -40,26 +41,26 @@ class Recommend extends Component {
     const {personalized,getDate} = this.state;
     return (
       <div className="Recommend">
-        {this.state.banners && <div className="banner"><Slide ref="slide" data={this.state.banners}></Slide></div>}
+        {this.state.banners && <div className="banner"><Slide ref="slide" data={this.state.banners}/></div>}
         <div className="menu">
           <div className="menu-item fm">
-            <div className="menu-icon"></div>
+            <div className="menu-icon"/>
             <p>私人FM</p>
           </div>
           <div className="menu-item daily">
-            <div className="menu-icon" data-date={getDate}></div>
+            <div className="menu-icon" data-date={getDate}/>
             <p>每日推荐</p>
           </div>
           <div className="menu-item playlist">
-            <div className="menu-icon"></div>
+            <div className="menu-icon"/>
             <p>歌单</p>
           </div>
-          <div className="menu-item rank">
-            <div className="menu-icon"></div>
+          <Link to="/toplist" className="menu-item rank">
+            <div className="menu-icon"/>
             <p>排行榜</p>
-          </div>
+          </Link>
         </div>
-        <LcrList title="推荐歌单" data={personalized}></LcrList>
+        <LcrList title="推荐歌单" data={personalized}/>
       </div>
     );
   }

@@ -11,10 +11,10 @@
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: $line;
-  // eslint-disable-next-line
-  /* autoprefixer: off */
-  -webkit-box-orient: vertical;
-  /* autoprefixer: on */
+  //// eslint-disable-next-line
+  ///* autoprefixer: off */
+  //-webkit-box-orient: vertical;
+  ///* autoprefixer: on */
 }
 
 //图片
