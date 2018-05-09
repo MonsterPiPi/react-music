@@ -29,29 +29,7 @@ class Slide extends Component {
     }
   }
   
-  componentWillMount() {
-    // console.log('Component WILL MOUNT!组件将挂载')
-  }
-  
   componentDidMount() {
-    // console.log('Component DID MOUNT!组件确实挂载')
-  }
-  
-  componentWillReceiveProps(newProps) {
-    // console.log('componentWillReceiveProps组件将接收道具!', newProps)
-  }
-  
-  shouldComponentUpdate(newProps, newState) {
-    // console.log("newProps", newProps)
-    // console.log("newState", newState)
-    return true;
-  }
-  
-  componentWillUpdate(nextProps, nextState) {
-    // console.log('componentWillUpdate!组件将更新')
-  }
-  
-  componentDidUpdate(prevProps, prevState) {
     if(!this.slider){
       this._initWdith();
       this._initSlide();
@@ -59,11 +37,6 @@ class Slide extends Component {
         this._play()
       }
     }
-    // console.log('Component DID UPDATE!组件更新')
-  }
-  
-  componentWillUnmount() {
-    // console.log('Component WILL UNMOUNT组件将卸载!')
   }
   
   //重新计算 better-scroll

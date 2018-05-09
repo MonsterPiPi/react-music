@@ -1,29 +1,73 @@
 import React, {Component} from 'react'
-import {Route, Switch, Redirect, NavLink, withRouter} from "react-router-dom"
+import {Link, withRouter} from "react-router-dom"
 import './discover.scss'
-import Recommend from 'pages/discover/recommend/recommend'
-import My from 'pages/discover/my/my'
+import Slide from 'base/slide/silde'
+import LcrList from 'components/lcr-list/lcr-list'
+import Loading from 'base/loading/loading'
+import {getBanner, getPersonalized} from 'api'
 
 class Discover extends Component {
-  componentDidMount() {
-    // console.log(this)
+  constructor(props) {
+    super(props);
+    this.state = {
+      banners: [],//banner数组
+      getDate: new Date().getDate(),//当前日期
+      personalized: [],//推荐歌单
+    }
   }
+  
+  componentDidMount() {
+    getBanner()
+    .then(res => {
+      // console.log(res)
+      if (res.data.code === 200) {
+        this.setState({
+          banners: res.data.banners
+        });
+        // this.refs.slide.refresh()
+      }
+    });
+    getPersonalized()
+    .then(res => {
+      // console.log(res);
+      if (res.data.code === 200) {
+        this.setState({
+          personalized: res.data.result
+        })
+      }
+    });
+  }
+  
   render() {
+    const {banners, personalized, getDate} = this.state;
     return (
       <div className="discover mm-music">
-        <div className="header">
-          <NavLink className="header-item" to={{pathname: '/discover/recommend', state: {showHeader: true}}}>推荐</NavLink>
-          {/*<NavLink className="header-item" to="/discover/my">我的</NavLink>*/}
-          {/*<NavLink className="tab-item" to="/find">发现</NavLink>*/}
-        </div>
-        <main className="mm-main">
-          <Switch>
-            <Route path="/discover/recommend" component={Recommend}/>
-            <Route path="/discover/my" component={My}/>
-            {/*<Route path="/discover/find" component={Find}/>*/}
-            <Redirect to={{pathname: '/discover/recommend', state: {showHeader: true}}}/>
-          </Switch>
-        </main>
+        {
+          personalized.length > 0 && banners.length > 0 ?
+            <div className="Recommend">
+              {this.state.banners && <div className="banner"><Slide ref="slide" data={this.state.banners}/></div>}
+              <div className="menu">
+                <div className="menu-item fm">
+                  <div className="menu-icon"/>
+                  <p>私人FM</p>
+                </div>
+                <div className="menu-item daily">
+                  <div className="menu-icon" data-date={getDate}/>
+                  <p>每日推荐</p>
+                </div>
+                <div className="menu-item playlist">
+                  <div className="menu-icon"/>
+                  <p>歌单</p>
+                </div>
+                <Link to="/toplist" className="menu-item rank">
+                  <div className="menu-icon"/>
+                  <p>排行榜</p>
+                </Link>
+              </div>
+              <LcrList title="推荐歌单" data={personalized}/>
+            </div>
+            : <Loading/>
+        }
       </div>
     );
   }

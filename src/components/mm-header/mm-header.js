@@ -14,9 +14,9 @@ const MmHeader = (props) => {
       <header className="mm-header">
         <div className="mm-header-left" onClick={open}/>
         <div className="mm-header-title">
+          <NavLink className="mm-header-item music" to={{pathname: '/music', state: {showHeader: true}}}/>
           <NavLink className="mm-header-item discover" to={{pathname: '/discover', state: {showHeader: true}}}/>
-          {/*<NavLink className="mm-header-item video" to="/toplist"/>*/}
-          {/*<div className="mm-header-item friends" to="/friends"/>*/}
+          <NavLink className="mm-header-item video" to={{pathname: '/video', state: {showHeader: true}}}/>
         </div>
         <div className="mm-header-right"/>
       </header>

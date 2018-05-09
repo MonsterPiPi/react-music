@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
+import './video.scss';
 import Loading from 'base/loading/loading'
-import './video.css';
 
 class Video extends Component {
   constructor(props) {
@@ -16,8 +16,9 @@ class Video extends Component {
   
   render() {
     return (
-      <div className="Find">
-        <Loading text="功能开发中..."></Loading>
+      <div className="video">
+        视频
+        <Loading text="功能开发中..."/>
       </div>
     );
   }

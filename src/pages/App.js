@@ -7,6 +7,7 @@ import Drawer from 'base/drawer/drawer'
 import MmHeader from 'components/mm-header/mm-header'
 import Player from 'components/player/player'
 
+const Music = asyncComponent(() => import('pages/music/music'));
 const Discover = asyncComponent(() => import('pages/discover/discover'));
 const Video = asyncComponent(() => import('pages/video/video'));
 const TopList = asyncComponent(() => import('pages/toplist/toplist'));
@@ -39,6 +40,7 @@ class App extends Component {
           {/*<CSSTransition timeout={300} classNames="translate">*/}
             <main className="mm-main">
               <Switch>
+                <Route path="/music" component={Music}/>
                 <Route path="/discover" component={Discover}/>
                 <Route path="/video" component={Video}/>
                 <Route path="/toplist" component={TopList}/>

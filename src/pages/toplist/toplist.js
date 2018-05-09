@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {getTopListDetail} from 'api'
-// import Loading from 'base/loading/loading'
+import Loading from 'base/loading/loading'
 import MmNav from 'components/mm-nav/mm-nav'
 import './toplist.scss'
 
@@ -54,60 +54,63 @@ class TopList extends Component {
     return (
       <div className="toplist">
         <MmNav title="排行榜"/>
-        {/*<Loading/>*/}
-        <div className="toplist-content">
-          <h1 className="toplist-title">官方榜单</h1>
-          <div className="row-list">
-            {
-              officialList.map(item => (
-                <div className="row-item" key={item.id}>
-                  <div className="item-hd">
-                    <img src={`${item.coverImgUrl}?param=150y150`} alt=""/>
-                    <p>{item.updateFrequency}</p>
-                  </div>
-                  <div className="row-item-bd">
-                    {
-                      item.tracks.map((tracks, index) => (
-                        <p key={`${item.id}${index}`}>{`${tracks.first}-${tracks.second}`}</p>
-                      ))
-                    }
-                  </div>
-                </div>
-              ))
-            }
-            {
-              artistList && artistList.name && (
-                <div className="row-item">
-                  <div className="item-hd">
-                    <img src={`${artistList.coverUrl}?param=150y150`} alt=""/>
-                    <p>{artistList.updateFrequency}</p>
-                  </div>
-                  <div className="row-item-bd">
-                    {
-                      artistList.artists.map((item, index) => (
-                        <p key={`${item.third}${index}`}>{`${item.first}    ${item.third}`}</p>
-                      ))
-                    }
-                  </div>
-                </div>
-              )
-            }
-          </div>
-          <h1 className="toplist-title">全球榜</h1>
-          <div className="column-list">
-            {
-              globalList.map(item => (
-                <div className="column-item" key={item.id}>
-                  <div className="item-hd">
-                    <img src={`${item.coverImgUrl}?param=150y150`} alt=""/>
-                    <p>{item.updateFrequency}</p>
-                  </div>
-                  <div className="column-bd">{item.name}</div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
+        {
+          officialList.length > 0 ?
+            <div className="toplist-content">
+              <h1 className="toplist-title">官方榜单</h1>
+              <div className="row-list">
+                {
+                  officialList.map(item => (
+                    <div className="row-item" key={item.id}>
+                      <div className="item-hd">
+                        <img src={`${item.coverImgUrl}?param=150y150`} alt=""/>
+                        <p>{item.updateFrequency}</p>
+                      </div>
+                      <div className="row-item-bd">
+                        {
+                          item.tracks.map((tracks, index) => (
+                            <p key={`${item.id}${index}`}>{`${tracks.first}-${tracks.second}`}</p>
+                          ))
+                        }
+                      </div>
+                    </div>
+                  ))
+                }
+                {
+                  artistList && artistList.name && (
+                    <div className="row-item">
+                      <div className="item-hd">
+                        <img src={`${artistList.coverUrl}?param=150y150`} alt=""/>
+                        <p>{artistList.updateFrequency}</p>
+                      </div>
+                      <div className="row-item-bd">
+                        {
+                          artistList.artists.map((item, index) => (
+                            <p key={`${item.third}${index}`}>{`${item.first}    ${item.third}`}</p>
+                          ))
+                        }
+                      </div>
+                    </div>
+                  )
+                }
+              </div>
+              <h1 className="toplist-title">全球榜</h1>
+              <div className="column-list">
+                {
+                  globalList.map(item => (
+                    <div className="column-item" key={item.id}>
+                      <div className="item-hd">
+                        <img src={`${item.coverImgUrl}?param=150y150`} alt=""/>
+                        <p>{item.updateFrequency}</p>
+                      </div>
+                      <div className="column-bd">{item.name}</div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+            : <Loading/>
+        }
       </div>
     )
   }
