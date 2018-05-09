@@ -7,10 +7,10 @@ const Loading = (props) => {
     <div className="loading-box">
       <div className="loading">
         <div>
-          <span className="one"></span>
-          <span className="tow"></span>
-          <span className="one"></span>
-          <span className="tow"></span>
+          <span className="one"/>
+          <span className="tow"/>
+          <span className="one"/>
+          <span className="tow"/>
         </div>
         <p>{text}</p>
       </div>

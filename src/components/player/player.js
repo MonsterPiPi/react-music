@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {CSSTransition} from 'react-transition-group'
+import classNames from 'classnames'
 import Cd from './cd/cd'
 import './player.scss'
 
@@ -59,14 +60,14 @@ class Player extends Component {
               <h2>牛奶咖啡</h2>
             </div>
             <div className="middle">
-              <Cd isPlay={isPlay} />
+              <Cd isPlay={isPlay}/>
             </div>
             <div className="footer">
               <div className="progress-wrapper"></div>
               <div className="play-wrapper">
                 <div className="btn btn-mode mode-list"/>
                 <div className="btn btn-prev"/>
-                <div className={isPlay ? 'btn btn-play' : 'btn btn-play btn-pause'} onClick={this.play}/>
+                <div className={classNames('btn btn-play', {'btn-pause': !isPlay})} onClick={this.play}/>
                 <div className="btn btn-next"/>
                 <div className="btn btn-list"/>
               </div>

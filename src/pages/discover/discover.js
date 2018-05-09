@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Route, Switch, Redirect, NavLink, withRouter} from "react-router-dom"
 import './discover.scss'
 import Recommend from 'pages/discover/recommend/recommend'
-// import Find from 'pages/discover/find/find'
 import My from 'pages/discover/my/my'
 
 class Discover extends Component {

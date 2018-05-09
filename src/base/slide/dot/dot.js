@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import './dot.scss'
 
 const Dot = (props) =>{
@@ -8,7 +9,7 @@ const Dot = (props) =>{
     <div className="dots">
       {
         data.length > 0 && data.map((item, index) => (
-          <span className={index === currentIndex ? 'dot on' : 'dot'} key={index}>{index}</span>
+          <span className={classNames('dot',{on:index === currentIndex})} key={index}>{index}</span>
         ))
       }
     </div>

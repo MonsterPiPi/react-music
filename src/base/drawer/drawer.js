@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './drawer.scss'
+import classNames from "classnames";
 
 class Drawer extends Component {
   onClose = () => {
@@ -9,7 +10,7 @@ class Drawer extends Component {
   render() {
     const {className, isDrawer} = this.props;
     return (
-      <div className={isDrawer ? 'drawer drawer-open' : 'drawer'}>
+      <div className={classNames('drawer', {'drawer-open': isDrawer})}>
         <div className={`drawer-content ${className}`}>
           {this.props.children}
         </div>

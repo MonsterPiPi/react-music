@@ -18,7 +18,7 @@ class TopList extends Component {
     getTopListDetail()
     .then(res => {
       if (res.data.code === 200) {
-        console.log(res.data.list)
+        // console.log(res.data.list)
         let officialList = [], globalList = [], artistList = res.data.artistToplist;
         res.data.list.forEach((item) => {
           if (item.ToplistType) {
@@ -50,7 +50,7 @@ class TopList extends Component {
   
   render() {
     const {officialList, globalList, artistList} = this.state;
-    console.log(artistList)
+    // console.log(artistList)
     return (
       <div className="toplist">
         <MmNav title="排行榜"/>
