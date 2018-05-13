@@ -1,5 +1,14 @@
 # React-Music（开发中...）
-> api：一个开源的[网易云音乐 NodeJS 版 API](https://binaryify.github.io/NeteaseCloudMusicApi)（有api才有动力写！！！）
+
+> #### api：一个开源的[网易云音乐 NodeJS 版 API](https://binaryify.github.io/NeteaseCloudMusicApi)（有api才有动力写！！！）
+
+> #### [在线演示地址](http://reactmusic.mtnhao.com)
+
+> #### [桌面版下载](http://cdn.mtnhao.com/mmPlayer.zip)
+
+> #### [Vue PC/移动端二合一版本](https://github.com/maomao1996/Vue-mmPlayer)
+
+> #### [交流QQ群：529940193](http://shang.qq.com/wpa/qunwpa?idkey=f8be1b627a89108ccfda9308720d2a4d0eb3306f253c5d3e8d58452e20b91129)
 
 ## 如何安装与使用（暂时没啥功能）
 
